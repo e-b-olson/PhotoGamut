@@ -1,0 +1,44 @@
+name: PhotoGamut
+options:
+  bundleIdPrefix: com.YOURBUNDLEIDHERE
+targets:
+  PhotoGamut:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.5"
+    sources: [PhotoGamut]
+    settings:
+      base:
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        MARKETING_VERSION: 0.0.0
+        CURRENT_PROJECT_VERSION: 0
+    info:
+      path: "./PhotoGamut/Info.plist"
+      properties:
+        PHPhotoLibraryPreventAutomaticLimitedAccessAlert: false
+        NSPhotoLibraryUsageDescription: "The app needs access to your photo library in order to generate the photo gamut."
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchStoryboardName: LaunchScreen
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              -
+                UISceneConfigurationName: "Default Configuration"
+                UISceneDelegateClassName: "$(PRODUCT_MODULE_NAME).SceneDelegate"
+                UISceneStoryboardFile: "Main"
+    scheme:
+      testTargets:
+        - PhotoGamutTests
+        - PhotoGamutUITests
+  PhotoGamutTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources: [PhotoGamutTests]
+  PhotoGamutUITests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources: [PhotoGamutUITests]
